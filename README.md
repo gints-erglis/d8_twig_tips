@@ -47,7 +47,7 @@ mytheme.theme.php
 /**
  * Implements hook_preprocess_paragraph().
  */
-function fortum_base_preprocess_paragraph(&$variables) {
+function mytheme_preprocess_paragraph(&$variables) {
 
   if ($paragraph->hasField('field_paragraph_single')) {
   
