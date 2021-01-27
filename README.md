@@ -60,7 +60,7 @@ function mytheme_preprocess_paragraph(&$variables) {
 ```
 paragraph-item.html.twig
 
-```
+```twig
 {% block paragraph %}
   <div{{ attributes.addClass(classes) }}>
     {% block content %}
