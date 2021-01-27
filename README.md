@@ -38,3 +38,17 @@ field-parent.html.twig
   {{ render }}
 {% endfor %}
 ```
+mytheme.theme.php
+
+```php
+/**
+ * Implements hook_preprocess_paragraph().
+ */
+function fortum_base_preprocess_paragraph(&$variables) {
+if ($paragraph->hasField('field_paragraph_single')) {
+    if (!empty($variables['elements']['#hide_media'])) {
+      $variables['hide_media'] = $variables['elements']['#hide_media'];
+    }
+  }
+}
+```
