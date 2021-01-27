@@ -33,9 +33,12 @@ field-parent.html.twig
 {% endfor %}
 
 {% for item in items %}
+
   {% set render = item.content %}
+  {# Pass some custom variable #}
   {% set render = render|merge( { "#hide_media": hide_media } ) %}
   {{ render }}
+  
 {% endfor %}
 ```
 mytheme.theme.php
@@ -45,8 +48,11 @@ mytheme.theme.php
  * Implements hook_preprocess_paragraph().
  */
 function fortum_base_preprocess_paragraph(&$variables) {
+
   if ($paragraph->hasField('field_paragraph_single')) {
+  
     if (!empty($variables['elements']['#hide_media'])) {
+      // Getting the custom variable and pass to the paragraph template
       $variables['hide_media'] = $variables['elements']['#hide_media'];
     }
   }
