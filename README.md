@@ -45,10 +45,25 @@ mytheme.theme.php
  * Implements hook_preprocess_paragraph().
  */
 function fortum_base_preprocess_paragraph(&$variables) {
-if ($paragraph->hasField('field_paragraph_single')) {
+  if ($paragraph->hasField('field_paragraph_single')) {
     if (!empty($variables['elements']['#hide_media'])) {
       $variables['hide_media'] = $variables['elements']['#hide_media'];
     }
   }
 }
+```
+paragraph-item.html.twig
+
+```
+{% block paragraph %}
+  <div{{ attributes.addClass(classes) }}>
+    {% block content %}
+      <h4>{{ content.field_title }}</h4>
+      {% if not hide_media %}
+        {{ content.field_paragraph_single }}
+      {% endif %}
+      {{ content.field_multi_links }}
+    {% endblock %}
+  </div>
+{% endblock paragraph %}
 ```
